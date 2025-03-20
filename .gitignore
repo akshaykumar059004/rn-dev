@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 backend/.env
+=======
+>>>>>>> 3327012cfae3a03799130d74bc3cddb7092cc2fe
 .expo/
 dist/
 web-build/
