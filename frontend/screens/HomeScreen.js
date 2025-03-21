@@ -11,7 +11,7 @@ export default function HomeScreen({ navigation }) {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://192.168.227.1:5000/api/users");
+      const response = await axios.get("https://rn-dev.onrender.com/api/users");
       setUsers(response.data);
     } catch (error) {
       console.log("Error fetching users:", error);

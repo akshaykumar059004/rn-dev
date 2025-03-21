@@ -8,7 +8,7 @@ export default function AddUserScreen({ navigation }) {
 
   const handleSubmit = async () => {
     try {
-      await axios.post("http://192.168.227.1:5000/api/users", { name, email });
+      await axios.post("https://rn-dev.onrender.com/users", { name, email });
       alert("User added!");
       navigation.goBack();
     } catch (error) {
