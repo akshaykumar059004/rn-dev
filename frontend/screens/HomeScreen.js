@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Button, FlatList, StyleSheet } from "react-native";
 import axios from "axios";
+import Constants from "expo-constants";
 import { useFocusEffect } from "@react-navigation/native";
+
+const API_URL = Constants.expoConfig.extra.API_URL; 
 
 export default function HomeScreen({ navigation }) {
   const [users, setUsers] = useState([]);
@@ -15,7 +18,7 @@ export default function HomeScreen({ navigation }) {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("https://rn-dev-1.onrender.com/api/users");
+      const response = await axios.get(`${API_URL}/api/users`);
       setUsers(response.data);
     } catch (error) {
       console.log("Error fetching users:", error);

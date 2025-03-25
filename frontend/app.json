@@ -7,6 +7,10 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "extra": {
+      "API_URL": "https://rn-dev-1.onrender.com"
+
+    },
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
