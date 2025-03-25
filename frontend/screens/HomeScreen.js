@@ -15,7 +15,7 @@ export default function HomeScreen({ navigation }) {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("");
+      const response = await axios.get("http://10.0.251.215:5000/api/users");
       setUsers(response.data);
     } catch (error) {
       console.log("Error fetching users:", error);
@@ -27,7 +27,7 @@ export default function HomeScreen({ navigation }) {
       <Text style={styles.heading}>User List</Text>
       <FlatList
         data={users}
-        keyExtractor={(item) => item._id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <Text>{item.name} - {item.email}</Text>}
       />
       <Button title="Add User" onPress={() => navigation.navigate("Add User")} />

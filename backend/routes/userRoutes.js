@@ -1,28 +1,47 @@
 const express = require("express");
-const User = require("../models/User");
-
 const router = express.Router();
+const db = require("../index"); // Import database connection
 
-// Route to add a new user
-router.post("/users", async (req, res) => {
-  try {
-    const { name, email } = req.body;
-    const newUser = new User({ name, email });
-    await newUser.save();
-    res.status(201).json({ message: "User added successfully!", user: newUser });
-  } catch (error) {
-    res.status(500).json({ message: "Error saving user", error });
-  }
+// Get all users
+router.get("/users", (req, res) => {
+  db.query("SELECT * FROM users", (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(results);
+  });
 });
 
-// Route to get all users
-router.get("/users", async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching users", error });
-  }
+// Add a new user
+router.post("/users", (req, res) => {
+  const { name, email } = req.body;
+  db.query("INSERT INTO users (name, email) VALUES (?, ?)", [name, email], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json({ id: result.insertId, name, email });
+  });
+});
+
+// Update user
+router.put("/users/:id", (req, res) => {
+  const { name, email } = req.body;
+  db.query("UPDATE users SET name = ?, email = ? WHERE id = ?", [name, email, req.params.id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json({ message: "User updated successfully" });
+  });
+});
+
+// Delete user
+router.delete("/users/:id", (req, res) => {
+  db.query("DELETE FROM users WHERE id = ?", [req.params.id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json({ message: "User deleted successfully" });
+  });
 });
 
 module.exports = router;
