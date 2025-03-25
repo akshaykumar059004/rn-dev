@@ -19,8 +19,6 @@ export default function HomeScreen({ navigation }) {
   const fetchUsers = async () => {
     try {
       const response = await axios.get(`${API_URL}/api/users`);
-      const response = await axios.get(`${API_URL}/api/users`);
-      setUsers(response.data);
     } catch (error) {
       console.log("Error fetching users:", error);
     }
