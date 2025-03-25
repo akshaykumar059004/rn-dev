@@ -8,7 +8,6 @@ const API_URL = Constants.expoConfig.extra.API_URL;
 
 export default function AddUserScreen({ navigation }) {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
 
   const handleSubmit = async () => {
     try {
