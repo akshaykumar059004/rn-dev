@@ -8,8 +8,10 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "extra": {
-      "API_URL": "https://rn-dev-1.onrender.com"
-
+      "API_URL": "https://rn-dev-1.onrender.com",
+      "eas": {
+        "projectId": "8b81c507-f884-4fa2-959e-2b2fe9ff5beb"
+      }
     },
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -23,7 +25,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.developersunit.SampleDataEntry"
     },
     "web": {
       "favicon": "./assets/favicon.png"
