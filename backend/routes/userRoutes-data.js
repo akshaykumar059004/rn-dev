@@ -15,7 +15,7 @@ router.get("/data", (req, res) => {
 // Add a new user
 router.post("/data", (req, res) => {
   const { name, email } = req.body;
-  db.query("INSERT INTO users (name, age, income, address) VALUES (?, ?, ?, ?)", [name, age, income, address], (err, result) => {
+  db.query("INSERT INTO data (name, age, income, address) VALUES (?, ?, ?, ?)", [name, age, income, address], (err, result) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
