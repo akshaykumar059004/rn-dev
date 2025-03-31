@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 });
 
 // Import user routes
-const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes-data");
 app.use("/api", userRoutes);
 
 // Start Server
