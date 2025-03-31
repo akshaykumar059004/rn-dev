@@ -25,8 +25,8 @@ router.post("/data", (req, res) => {
 
 // Update user (TBU)
 router.put("/users/:id", (req, res) => {
-  const { name, email } = req.body;
-  db.query("UPDATE users SET name = ?, email = ? WHERE id = ?", [name, email, req.params.id], (err, result) => {
+  const { name, age, income, address} = req.body;
+  db.query("UPDATE data SET name = ?, age = ?, income = ?, address = ? WHERE id = ?", [name, age, income, address, req.params.id], (err, result) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
@@ -35,8 +35,8 @@ router.put("/users/:id", (req, res) => {
 });
 
 // Delete user (TBU)
-router.delete("/users/:id", (req, res) => {
-  db.query("DELETE FROM users WHERE id = ?", [req.params.id], (err, result) => {
+router.delete("/data/:id", (req, res) => {
+  db.query("DELETE FROM data WHERE id = ?", [req.params.id], (err, result) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
